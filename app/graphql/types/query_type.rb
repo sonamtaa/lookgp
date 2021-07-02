@@ -9,14 +9,14 @@ module Types
 
     # TODO: remove me
     field :test_field, String, null: false,
-      description: "An example field added by the generator"
+                               description: 'An example field added by the generator'
 
     def test_field
-      "Hello World!"
+      'Hello World!'
     end
 
     field :author, Types::AuthorType, null: true,
-      description: "Returns the Author with the given id" do
+                                      description: 'Returns the Author with the given id' do
       argument :id, ID, required: true
     end
 
