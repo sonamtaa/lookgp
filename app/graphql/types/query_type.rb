@@ -22,8 +22,10 @@ module Types
       argument :id, ID, required: true
     end
 
-    def author(id:)
-      Author.find_by(id: id)
+    field :authors, [Types::AuthorType], null: false, description: 'Returns the List of Authors'
+
+    def authors
+      Author.all
     end
   end
 end

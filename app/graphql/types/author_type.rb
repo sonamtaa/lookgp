@@ -7,5 +7,13 @@ module Types
     field :last_name, String, null: true
     field :yob, Integer, null: false
     field :is_alive, Boolean, null: false
+    field :full_name, String, null: false, camelize: false # user define types
+
+    def full_name
+      ([object.first_name, object.last_name].compact).join(' ')
+    end
+
+    field :coordinates, Types::CoordinatesType, null: false # custom objects
+    field :publication_years, [Integer], null: false # custom objects
   end
 end
