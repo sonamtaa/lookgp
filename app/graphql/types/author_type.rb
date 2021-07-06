@@ -1,6 +1,17 @@
 # frozen_string_literal: true
 
 module Types
+  class AuthorInputType < GraphQL::Schema::InputObject
+    graphql_name 'AuthorInputType'
+    description 'Attributes for authors'
+
+    argument :id, ID, required: false
+    argument :first_name, String, required: false, camelize: false
+    argument :last_name, String, required: false, camelize: false
+    argument :yob, Integer, required: false
+    argument :is_alive, Boolean, required: false, camelize: false
+  end
+
   class AuthorType < Types::BaseObject
     field :id, ID, null: false
     field :first_name, String, null: true
