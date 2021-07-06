@@ -26,5 +26,10 @@ module Types
 
     field :coordinates, Types::CoordinatesType, null: false # custom objects
     field :publication_years, [Integer], null: false # custom objects
+    field :errors, [Types::ErrorType], null: true
+
+    def errors
+      object.errors.map { |e| { field_name: e.attribute, errors: [e.full_message] } }
+    end
   end
 end
