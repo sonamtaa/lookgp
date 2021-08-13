@@ -4,9 +4,9 @@ module Types
   class MutationType < Types::BaseObject
     field :create_author, Types::AuthorType, mutation: Mutations::CreateAuthor, description: 'Create Author'
     field :update_author, Types::AuthorType, mutation: Mutations::UpdateAuthor, description: 'Update Author'
-    # FIXME: with proper response after updation
+    # FIXME: with proper response after updates
 
-    field :delete_author, Boolean, null: false, description: "Delete Author" do
+    field :delete_author, Boolean, null: false, description: 'Delete Author' do
       argument :id, ID, required: true
     end
 

@@ -29,7 +29,7 @@ module Types
     field :errors, [Types::ErrorType], null: true
 
     def errors
-      object.errors.map { |e| { field_name: e.attribute, errors: [e.full_message] } }
+      object.errors.map { |error| { field_name: error.attribute, errors: [error.full_message] } }
     end
   end
 end
