@@ -1,0 +1,89 @@
+require:
+  - rubocop-performance
+  - rubocop-rspec
+
+AllCops:
+  Exclude:
+    - '.git/**/*'
+    - 'bin/**/*'
+    - 'coverage/**/*'
+    - 'db/**/*'
+    - 'log/**/*'
+    - 'tmp/**/*'
+    - 'public/**/*'
+    - 'spec/fixtures/**/*'
+    - 'config/puma.rb'
+  DisplayCopNames: true
+  DisplayStyleGuide: true
+  TargetRubyVersion: 3.0.1
+  NewCops: enable
+Metrics/AbcSize:
+  # default 15 is too strict but we can lower in the future
+  Max: 15
+Metrics/ClassLength:
+  # default 100 is too strict but we can lower in the future
+  Max: 100
+# 10 lines by default is too restrictive
+Metrics/MethodLength:
+  Max: 10
+
+# Disagree with these for now
+Metrics/BlockLength:
+  IgnoredMethods: ['describe', 'context', 'class_methods', 'included']
+Style/NumericLiterals:
+  Enabled: false
+Style/Documentation:
+  Enabled: false
+Style/ClassAndModuleChildren:
+  Enabled: false
+# Seem broken?
+Style/Alias:
+  Enabled: false
+Style/DoubleNegation:
+  Enabled: false
+
+# Temp disable the below
+Style/RegexpLiteral:
+  Enabled: false
+Style/BlockDelimiters:
+  Enabled: false
+Layout/LineLength:
+  Max: 130
+Lint/RescueException:
+  Enabled: false
+Style/MissingRespondToMissing:
+  Enabled: false
+Lint/UselessMethodDefinition:
+  Enabled: true
+Naming/VariableNumber:
+  Enabled: false
+
+# Specs are namespaced with modules so no need to prefix it
+# eg. With `RSpec/FilePath` enabled, rubocop will raise error
+#    => Spec path should end with queries/user*_spec.rb
+# for `users/show_spec` which IMO is not necessary.
+#
+RSpec/FilePath:
+  Enabled: false
+
+# Let's be a bit lenient to begin with. :)
+RSpec/NestedGroups:
+  Max: 6
+
+RSpec/MultipleExpectations:
+  Max: 10
+
+RSpec/ExampleLength:
+  Max: 15
+
+RSpec/ContextWording:
+  Prefixes:
+    - for
+    - when
+    - with
+    - without
+
+RSpec/DescribeClass:
+  Exclude:
+    - spec/tasks/*
+
